@@ -51,7 +51,7 @@ spec:
       description: "Specify a specific helm image"
       default: "alpine/k8s:1.25.14"
   steps:
-    - name: cleanup-cmdb-deployment
+    - name: cleanup-security-rbac-deployment
       onError: continue
       image: $(params.helm_image)
       script: |
@@ -68,7 +68,7 @@ spec:
         kubectl version
         echo clean previous installation...
         helm uninstall -n "$(params.release_namespace)" "$(params.release_namespace)"
-    - name: deploy-cmdb-service
+    - name: deploy-security-rbac-service
       image: $(params.helm_image)
       script: |
         echo "From Task"
