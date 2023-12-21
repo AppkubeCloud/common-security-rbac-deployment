@@ -120,6 +120,11 @@ spec:
     - name: secrets
       workspace: aws-secrets
   - name: fetch-bdd-test-repo
+    when:
+      - input: $(params.bdd-repo-url)
+        operator: notin
+        values: [""]
+    runAfter: ["service-deploy-with-helm"]
     taskRef:
       name: git-clone
     workspaces:
@@ -129,7 +134,11 @@ spec:
     - name: url
       value: $(params.bdd-repo-url)
   - name: bdd-testing
-    runAfter: ["service-deploy-with-helm"]
+    when:
+      - input: $(params.bdd-repo-url)
+        operator: notin
+        values: [""]
+    runAfter: ["fetch-bdd-test-repo"]
     taskRef:
       name: cmdb-bdd-testing
     workspaces:
@@ -198,7 +207,7 @@ spec:
   - name: helm-repo-url
     value: https://github.com/synectiks-sddc/tekton-samples.git
   - name: bdd-repo-url
-    value: https://github.com/AppkubeCloud/appkube-cmdb-security-tests.git
+    value: ""
   - name: helm-release-version-param
     value: 0.1.0
   - name: helm-release-name-param
