@@ -43,6 +43,13 @@ service:
   type: ClusterIP
   port: 8094
 
+prometheus:
+  job: "appkube_rbac"
+  port: "8094"
+  metrics_path: "/management/prometheus"
+  label: "environment=test,app=appkube_rbac"
+  scrape_enabled: true
+
 ingress:
   enabled: false
   className: ""
