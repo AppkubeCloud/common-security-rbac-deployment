@@ -81,4 +81,5 @@ spec:
         echo "Check kubectl presence"
         kubectl version
         echo installing helm chart...
-        helm install -n "$(params.release_namespace)" "$(params.release_namespace)" /workspace/source/java-service-deploy/"$(params.release_namespace)" --set "$(params.overwrite_values)"
+        helm install -n "$(params.release_namespace)" "$(params.release_namespace)" /workspace/source/helm --set "$(params.overwrite_values)"
+        # kubectl annotate service appkube-security-rbac-service -n appkube-security-rbac-service prometheus.io/scrape=true prometheus.io/path=/management/prometheus prometheus.io/port=8094 prometheus.io/job=appkube-rbactest

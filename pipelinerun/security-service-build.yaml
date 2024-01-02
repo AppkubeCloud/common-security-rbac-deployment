@@ -24,7 +24,7 @@ spec:
     description: service revision to checkout. (branch, tag, sha, ref, etc...)
   - name: helm-repo-url
     type: string
-    description: HELM repo for CMDB service - https://github.com/synectiks-sddc/tekton-samples.git
+    description: HELM repo for security-rbac service - https://github.com/AppkubeCloud/common-security-rbac-deployment.git
   - name: bdd-repo-url
     type: string
     description: bdd test repo - https://github.com/AppkubeCloud/appkube-cmdb-bdd-tests.git
@@ -205,7 +205,7 @@ spec:
   - name: repo-revision
     value: ''
   - name: helm-repo-url
-    value: https://github.com/synectiks-sddc/tekton-samples.git
+    value: https://github.com/AppkubeCloud/common-security-rbac-deployment.git
   - name: bdd-repo-url
     value: ""
   - name: helm-release-version-param
