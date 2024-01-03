@@ -1,8 +1,0 @@
-SERVICE:
-  ANNOTATIONS: {
-    prometheus.io/path: "/management/prometheus",
-    prometheus.io/port: '8094',
-    prometheus.io/scrape: 'true',
-    prometheus.io/job: "appkube-rbac-test",
-    prometheus.io/label: "environment=devtest,app=appkube-rbac"
-  }
