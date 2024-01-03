@@ -42,13 +42,13 @@ securityContext: {}
 service:
   type: ClusterIP
   port: 8094
-  ANNOTATIONS: {
+  ANNOTATIONS: 
     prometheus.io/path: "/management/prometheus",
     prometheus.io/port: '8094',
     prometheus.io/scrape: 'true',
     prometheus.io/job: "appkube-rbac-test",
     prometheus.io/label: "environment=devtest,app=appkube-rbac"
-    }
+    
 
   #prometheus:
   #job: "appkube_rbac"
