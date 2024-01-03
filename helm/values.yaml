@@ -42,7 +42,7 @@ securityContext: {}
 service:
   type: ClusterIP
   port: 8094
-  ANNOTATIONS: {
+  annotations: {
     prometheus.io/path: "/management/prometheus",
     prometheus.io/port: '8094',
     prometheus.io/scrape: 'true',

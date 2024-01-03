@@ -4,6 +4,10 @@ metadata:
   name: {{ include "appkube-security-rbac-service.fullname" . }}
   labels:
     {{- include "appkube-security-rbac-service.labels" . | nindent 4 }}
+  {{- with .Values.service.annotations }}
+  annotations:
+    {{- toYaml . | indent 4 }}
+    {{- end }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
