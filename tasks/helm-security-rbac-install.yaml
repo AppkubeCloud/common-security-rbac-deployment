@@ -51,23 +51,6 @@ spec:
       description: "Specify a specific helm image"
       default: "alpine/k8s:1.25.14"
   steps:
-    - name: cleanup-security-rbac-deployment
-      onError: continue
-      image: $(params.helm_image)
-      script: |
-        echo "From Task"
-        export AWS_CONFIG_FILE=/tekton/home/.aws/config
-        export AWS_SHARED_CREDENTIALS_FILE=/tekton/home/.aws/credentials
-        echo "Configure kubectl for eks cluster"
-        aws eks update-kubeconfig --region us-east-1 --name myclustTT
-
-        echo "List repo, ls -al /workspace/source"
-        ls -al /workspace/source
-
-        echo "Check kubectl presence"
-        kubectl version
-        echo clean previous installation...
-        helm uninstall -n "$(params.release_namespace)" "$(params.release_namespace)"
     - name: deploy-security-rbac-service
       image: $(params.helm_image)
       script: |
@@ -81,5 +64,5 @@ spec:
         echo "Check kubectl presence"
         kubectl version
         echo installing helm chart...
-        helm install -n "$(params.release_namespace)" "$(params.release_namespace)" /workspace/source/helm --set "$(params.overwrite_values)"
+        helm upgrade -i -n "$(params.release_namespace)" "$(params.release_namespace)" /workspace/source/helm --set "$(params.overwrite_values)"
         # kubectl annotate service appkube-security-rbac-service -n appkube-security-rbac-service prometheus.io/scrape=true prometheus.io/path=/management/prometheus prometheus.io/port=8094 prometheus.io/job=appkube-rbactest

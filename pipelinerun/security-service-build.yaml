@@ -88,6 +88,8 @@ spec:
     params:
     - name: IMAGE
       value: synectiks/appkube-security-rbac-service:$(tasks.fetch-repo.results.commit)
+    - name: IMAGE2
+      value: synectiks/appkube-security-rbac-service:latest
     - name: DOCKERFILE
       value: $(workspaces.source.path)/Dockerfile
     - name: CONTEXT
