@@ -5,7 +5,7 @@ metadata:
     prometheus.io/scrape: true
     prometheus.io/job: appkube-rbactest
     prometheus.io/path: /management/prometheus
-    prometheus.io/port: 8094
+    prometheus.io/port: '8094'
     prometheus.io/label: environment=devtest,app=appkube_rbactest
   name: {{ include "appkube-security-rbac-service.fullname" . }}
   labels:
