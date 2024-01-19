@@ -104,8 +104,8 @@ spec:
     - name: url
       value: $(params.helm-repo-url)
     - name: revision
-      value: "0.1" 
- - name: service-deploy-with-helm
+      value: "0.1"
+  - name: service-deploy-with-helm
     runAfter: ["build-kaniko"]
     taskRef:
       name: helm-security-rbac-install
